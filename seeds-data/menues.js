@@ -7,7 +7,7 @@
 module.exports = [
     {
         id: 1,
-        store_id: 1,
+        restaurant_id: 1,
         title: "All Day Menu"
     }
 ]

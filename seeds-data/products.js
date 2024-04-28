@@ -14,6 +14,7 @@ module.exports = [
         price: 15.49,
         cost: 10,
         status: true,
+        description:"default bowl"
       },
       {
         id: 2,
@@ -23,6 +24,7 @@ module.exports = [
         price: 14.29,
         cost: 10,
         status: true,
+        description:"default bowl"
       },
       {
         id: 3,
@@ -33,6 +35,7 @@ module.exports = [
         price: 13.79,
         cost: 10,
         status: true,
+        description:"default bowl"
       },
       {
         id: 4,
@@ -43,6 +46,7 @@ module.exports = [
         price: 14.79,
         cost: 10,
         status: false,
+        description:"default bowl"
       },
       {
         id: 5,
@@ -53,6 +57,7 @@ module.exports = [
         price: 14.29,
         cost: 10,
         status: true,
+        description:"default bowl"
       },
       {
         id: 6,
@@ -62,6 +67,7 @@ module.exports = [
         price: 13.79,
         cost: 10,
         status: false,
+        description:"default bowl"
       },
       {
         id: 7,
@@ -72,6 +78,7 @@ module.exports = [
         price: 11.99,
         cost: 7,
         status: true,
+        description:"default bowl"
       },
       {
         id: 8,
@@ -82,6 +89,7 @@ module.exports = [
         price: 11.49,
         cost: 7,
         status: true,
+        description:"default bowl"
       },
       {
         id: 9,
@@ -92,6 +100,7 @@ module.exports = [
         price: 11.49,
         cost: 8.75,
         status: true,
+        description:"default bowl"
       },
       {
         id: 10,
@@ -102,6 +111,7 @@ module.exports = [
         price: 11.49,
         cost: 7,
         status: true,
+        description:"default bowl"
       },
       {
         id: 11,
@@ -112,6 +122,7 @@ module.exports = [
         price: 11.99,
         cost: 7,
         status: false,
+        description:"default bowl"
       },
       {
         id: 12,
@@ -122,6 +133,7 @@ module.exports = [
         price: 12.99,
         cost: 8,
         status: false,
+        description:"default bowl"
       },
       {
         id: 13,
@@ -132,6 +144,7 @@ module.exports = [
         price: 10.99,
         cost: 7,
         status: false,
+        description:"default bowl"
       },
       {
         id: 14,
@@ -142,6 +155,7 @@ module.exports = [
         price: 9.29,
         cost: 8,
         status: false,
+        description:"default bowl"
       },
       {
         id: 15,
@@ -152,5 +166,6 @@ module.exports = [
         price: 11.99,
         cost: 8,
         status: false,
+        description:"default bowl"
       }
 ]
