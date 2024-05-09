@@ -8,7 +8,7 @@ exports.up = function(knex) {
         table.increments('id').primary();
         table.string('name').notNullable();
         table.string('email').notNullable();
-        table.string('location').notNullable();
+        table.string('address').notNullable();
         table.string('password').notNullable();
         table.timestamp('created_at').defaultTo(knex.fn.now());
         table.timestamp('updated_at').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
@@ -16,16 +16,37 @@ exports.up = function(knex) {
     .createTable('menues', (table) => {
         table.increments('id').primary();
         table
-          .integer('resteraunt_id')
+          .integer('restaurant_id')
           .unsigned()
           .references('restaurants.id')
           .onUpdate('CASCADE')
           .onDelete('CASCADE');
-        table.string('name').notNullable();
+        table.string('title').notNullable();
         table.timestamp('created_at').defaultTo(knex.fn.now());
         table.timestamp('updated_at').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
     })
-    .createTable('items', (table) => {
+    .createTable('categories', (table) => {
+        table.increments('id').primary();
+        table.string('title').notNullable();
+        table.timestamp('created_at').defaultTo(knex.fn.now());
+        table.timestamp('updated_at').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+    })
+    .createTable('orders', (table) => {
+        table.increments('id').primary();
+        table
+          .integer('restaurant_id')
+          .unsigned()
+          .references('restaurants.id')
+          .onUpdate('CASCADE')
+          .onDelete('CASCADE');
+        table.integer('amount').notNullable();
+        table.string('orderid').notNullable();
+        table.string('customer').notNullable();
+        table.string('payment').notNullable();
+        table.timestamp('created_at').defaultTo(knex.fn.now());
+        table.timestamp('updated_at').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+    })
+    .createTable('products', (table) => {
         table.increments('id').primary();
         table
             .integer('menu_id')
@@ -33,8 +54,12 @@ exports.up = function(knex) {
             .references('menues.id')
             .onUpdate('CASCADE')
             .onDelete('CASCADE');
+        table.string('productid').notNullable();
+        table.integer('price').notNullable();
+        table.integer('cost').notNullable();
         table.string('name').notNullable();
-        table.boolean('availability').defaultTo(true);
+        table.string('calories').notNullable();
+        table.boolean('status').defaultTo(true);
         table.string('description').notNullable();
         table.timestamp('created_at').defaultTo(knex.fn.now());
         table.timestamp('updated_at').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
@@ -42,9 +67,9 @@ exports.up = function(knex) {
     .createTable('ingredients', (table) => {
         table.increments('id').primary();
         table
-            .integer('item_id')
+            .integer('product_id')
             .unsigned()
-            .references('items.id')
+            .references('products.id')
             .onUpdate('CASCADE')
             .onDelete('CASCADE');
         table.string('name').notNullable();
@@ -60,5 +85,5 @@ exports.up = function(knex) {
  */
 
 exports.down = function(knex) {
-    return knex.schema.dropTable('ingredients').dropTable('items').dropTable('menues').dropTable('restaurants');
+    return knex.schema.dropTable('ingredients').dropTable('products').dropTable('orders').dropTable('menues').dropTable('restaurants');
 };
