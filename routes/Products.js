@@ -25,7 +25,31 @@ router.post('/', async(req,res) => {
     } catch (err) {
         res
             .status(500)
-            .send({ message: `unable to create new deck: ${err}`});
+            .send({ message: `unable to create new product: ${err}`});
+    }
+})
+
+router.put('/:id', async(req,res) => {
+    const updates = req.body;
+
+    try {
+        const updatedProductId = await knex('products')
+            .where({ id: req.params.id})
+            .update(updates);
+
+        if (updatedProductId) {
+            const updatedProduct = await knex('products').where({ id:updatedProductId });
+            res.status(200).json(updatedProduct)
+        } else {
+            res
+                .status(404)
+                .json({ message: `Product with id ${id} does not exist`});
+        }
+
+    } catch (err) {
+        res
+            .status(404)
+            .json({ message: `error updating this product. Ran into error: ${err}`})
     }
 })
 
